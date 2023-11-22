@@ -24,16 +24,6 @@ The Snake game involves controlling a snake on a grid. The snake moves continuou
    - The game ends if the snake collides with itself or the border.
    - Press 'Refresh' to restart the game.
 
-## Getting Started
-
-To run the game locally:
-
-1. Clone this repository:
-   ```
-   git clone https://github.com/awakenedhaki/snakejs.git
-   ```
-2. Open `index.html` in your web browser.
-
 ## Code Structure
 
 The main components of the code include:
