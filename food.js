@@ -1,14 +1,19 @@
 /**
  * Represents a food object that appears on the canvas for the snake to eat.
- * @constructor
+ * @class Food
  */
 class Food {
+  /**
+   * Constructs a Food object.
+   * @constructor
+   */
   constructor() {
     this.position = createVector(100, 100);
   }
 
   /**
    * Updates the location of the food within the canvas grid.
+   * @method Food#updateLocation
    */
   updateLocation() {
     let rows = floor(height / tileSize);
@@ -22,6 +27,7 @@ class Food {
 
   /**
    * Displays the food on the canvas.
+   * @method Food#show
    */
   show() {
     stroke(227, 228, 219);
