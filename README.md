@@ -14,6 +14,8 @@ The Snake game involves controlling a snake on a grid. The snake moves continuou
 
 ## How to Play
 
+You can access the game by clicking [here](https://editor.p5js.org/awakenedhaki/sketches/IrOfLF8tr)!
+
 1. **Controls**:
    - Use the arrow keys (UP, DOWN, LEFT, RIGHT) to change the snake's direction.
 2. **Gameplay**:
