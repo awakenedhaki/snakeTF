@@ -49,7 +49,7 @@ class Snake {
    * @returns {boolean} True if the snake's tail position matches the food position; otherwise, false.
    */
   eat(food) {
-    return this.tail.equals(food.position);
+    return this.head.equals(food.position);
   }
 
   /**
