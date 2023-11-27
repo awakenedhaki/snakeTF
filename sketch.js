@@ -1,17 +1,22 @@
+// Declaring Global Variables ==================================================
 let snake, food;
+
+// Setting Constants ===========================================================
 const tileSize = 10;
 
+// p5js Boilerplate ============================================================
 function setup() {
   createCanvas(600, 600);
   frameRate(10);
 
   snake = new Snake(300, 300);
-  food = new Food();
+  food = new Food(generate2DCoordinates());
 }
 
 function draw() {
   background(59, 37, 44);
 
+  // Game Loop
   food.show();
   if (snake.eat(food)) {
     food.updateLocation();
@@ -20,6 +25,7 @@ function draw() {
   snake.update();
   snake.show();
 
+  // Terminate Game
   if (gameOver(snake)) {
     translate(width / 2, height / 2);
     textAlign(CENTER, CENTER);
@@ -35,23 +41,39 @@ function draw() {
   }
 }
 
+function keyPressed() {
+  if (keyCode === UP_ARROW && snake.yvelocity !== 1) {
+    snake.changeDirection(0, -1);
+  } else if (keyCode === DOWN_ARROW && snake.yvelocity !== -1) {
+    snake.changeDirection(0, 1);
+  } else if (keyCode === LEFT_ARROW && snake.xvelocity !== 1) {
+    snake.changeDirection(-1, 0);
+  } else if (keyCode === RIGHT_ARROW && snake.xvelocity !== -1) {
+    snake.changeDirection(1, 0);
+  }
+}
+
+// Helper Functions ============================================================
+function generate2DCoordinates() {
+  let rows = floor(height / tileSize);
+  let columns = floor(width / tileSize);
+
+  let x = floor(random(rows)) * tileSize;
+  let y = floor(random(columns)) * tileSize;
+
+  return createVector(x, y);
+}
+
+// Game State ==================================================================
 function borderCollision(snake) {
-  return (snake.body[0].x < 0 || snake.body[0].x > width ||
-          snake.body[0].y < 0 || snake.body[0].y > height);
+  return (
+    snake.body[0].x < 0 ||
+    snake.body[0].x > width ||
+    snake.body[0].y < 0 ||
+    snake.body[0].y > height
+  );
 }
 
 function gameOver(snake) {
   return borderCollision(snake) || snake.collision();
-}
-
-function keyPressed() {
-  if (keyCode === UP_ARROW && snake.yvelocity !== 1) {
-    snake.changeDirection(0, -1)
-  } else if (keyCode === DOWN_ARROW && snake.yvelocity !== -1) {
-    snake.changeDirection(0, 1)
-  } else if (keyCode === LEFT_ARROW && snake.xvelocity !== 1) {
-    snake.changeDirection(-1, 0)
-  } else if (keyCode === RIGHT_ARROW && snake.xvelocity !== -1) {
-    snake.changeDirection(1, 0)
-  }
 }
