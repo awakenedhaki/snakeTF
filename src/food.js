@@ -7,8 +7,8 @@ class Food {
    * Constructs a Food object.
    * @constructor
    */
-  constructor() {
-    this.position = createVector(100, 100);
+  constructor(position) {
+    this.position = position;
   }
 
   /**
@@ -16,13 +16,7 @@ class Food {
    * @method Food#updateLocation
    */
   updateLocation() {
-    let rows = floor(height / tileSize);
-    let columns = floor(width / tileSize);
-
-    let x = floor(random(rows)) * tileSize;
-    let y = floor(random(columns)) * tileSize;
-
-    this.position = createVector(x, y);
+    this.position = generate2DCoordinates();
   }
 
   /**
