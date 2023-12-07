@@ -28,4 +28,20 @@ class Food {
     fill(59, 37, 44);
     rect(this.position.x, this.position.y, tileSize, tileSize);
   }
+
+  /**
+   * Get the x-coordinate of the food's position.
+   * @returns {number} The x-coordinate of the food's position.
+   */
+  get x() {
+    return this.position.x;
+  }
+
+  /**
+   * Get the y-coordinate of the food's position.
+   * @returns {number} The y-coordinate of the food's position.
+   */
+  get y() {
+    return this.position.y;
+  }
 }
