@@ -3,15 +3,13 @@ class Brain {
    * Represents a Brain object.
    * @constructor
    * @param {number} nInputNodes - The number of input nodes.
-   * @param {number} nHiddenNodes - The number of hidden nodes.
-   * @param {number} nHiddenLayers - The number of hidden layers.
+   * @param {Map<number, number>} hiddenLayers - The map specifying the number of layers and nodes in each layer.
    * @param {number} nOutputNodes - The number of output nodes.
    * @param {object} model - The pre-existing model (optional).
    */
-  constructor(nInputNodes, nHiddenNodes, nHiddenLayers, nOutputNodes, model) {
+  constructor(nInputNodes, hiddenLayers, nOutputNodes, model) {
     this.nInputNodes = nInputNodes;
-    this.nHiddenNodes = nHiddenNodes;
-    this.nHiddenLayers = nHiddenLayers;
+    this.hiddenLayers = hiddenLayers;
     this.nOutputNodes = nOutputNodes;
     this.model =
       model ||
@@ -21,20 +19,19 @@ class Brain {
   /**
    * Creates a neural network model with the specified number of input nodes, hidden nodes, hidden layers, and output nodes.
    * @param {number} nInputNodes - The number of input nodes.
-   * @param {number} nHiddenNodes - The number of hidden nodes.
-   * @param {number} nHiddenLayers - The number of hidden layers.
+   * @param {Map<number, number>} hiddenLayers - The map specifying the number of layers and nodes in each layer.
    * @param {number} nOutputNodes - The number of output nodes.
    * @returns {tf.Sequential} The created neural network model.
    */
-  createModel(nInputNodes, nHiddenNodes, nHiddenLayers, nOutputNodes) {
+  createModel(nInputNodes, hiddenLayers, nOutputNodes) {
     const model = tf.sequential();
 
-    for (let i = 0; i < nHiddenLayers; i++) {
+    for (const [layer, nodes] of Object.entries(this.hiddenLayers)) {
       const hidden = tf.layers.dense({
-        units: nHiddenNodes,
-        inputShape: [nInputNodes],
+        units: nodes,
         activation: "sigmoid",
-        useBias: true,
+        inputShape:
+          layer === 0 ? [nInputNodes] : [this.hiddenLayers[layer - 1]],
       });
       model.add(hidden);
     }
