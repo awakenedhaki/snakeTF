@@ -53,17 +53,6 @@ function keyPressed() {
   }
 }
 
-// Helper Functions ============================================================
-function generate2DCoordinates() {
-  let rows = floor(height / tileSize);
-  let columns = floor(width / tileSize);
-
-  let x = floor(random(rows)) * tileSize;
-  let y = floor(random(columns)) * tileSize;
-
-  return createVector(x, y);
-}
-
 // Game State ==================================================================
 function borderCollision(snake) {
   return (
