@@ -1,7 +1,7 @@
 /**
  * Manages multiple game instances.
  */
-class GameInstanceManager {
+class GameInstancesManager {
   constructor(nInstances) {
     this.nInstances = nInstances;
     this.gameInstances = [];
