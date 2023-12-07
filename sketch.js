@@ -52,17 +52,3 @@ function keyPressed() {
     snake.changeDirection(1, 0);
   }
 }
-
-// Game State ==================================================================
-function borderCollision(snake) {
-  return (
-    snake.body[0].x < 0 ||
-    snake.body[0].x > width ||
-    snake.body[0].y < 0 ||
-    snake.body[0].y > height
-  );
-}
-
-function gameOver(snake) {
-  return borderCollision(snake) || snake.collision();
-}
