@@ -10,7 +10,7 @@ function setup() {
   frameRate(10);
 
   snake = new Snake(300, 300);
-  food = new Food(generate2DCoordinates());
+  food = new Food();
 }
 
 function draw() {
