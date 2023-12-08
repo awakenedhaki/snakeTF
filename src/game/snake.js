@@ -22,6 +22,13 @@ class Snake {
    * @param {number} y - The y-component of the new velocity.
    */
   changeDirection(x, y) {
+    if (
+      (x !== 0 && x === -this.xvelocity) ||
+      (y !== 0 && y === -this.yvelocity)
+    ) {
+      return;
+    }
+
     this.xvelocity = x;
     this.yvelocity = y;
   }

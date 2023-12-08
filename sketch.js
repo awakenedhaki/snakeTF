@@ -42,13 +42,13 @@ function draw() {
 }
 
 function keyPressed() {
-  if (keyCode === UP_ARROW && snake.yvelocity !== 1) {
-    snake.changeDirection(0, -1);
-  } else if (keyCode === DOWN_ARROW && snake.yvelocity !== -1) {
-    snake.changeDirection(0, 1);
-  } else if (keyCode === LEFT_ARROW && snake.xvelocity !== 1) {
-    snake.changeDirection(-1, 0);
-  } else if (keyCode === RIGHT_ARROW && snake.xvelocity !== -1) {
-    snake.changeDirection(1, 0);
+  if (keyCode === UP_ARROW) {
+    gameInstance.updateSnakeDirection(0, -1);
+  } else if (keyCode === DOWN_ARROW) {
+    gameInstance.updateSnakeDirection(0, 1);
+  } else if (keyCode === LEFT_ARROW) {
+    gameInstance.updateSnakeDirection(-1, 0);
+  } else if (keyCode === RIGHT_ARROW) {
+    gameInstance.updateSnakeDirection(1, 0);
   }
 }
