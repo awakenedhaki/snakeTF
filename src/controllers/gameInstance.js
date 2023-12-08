@@ -110,6 +110,11 @@ class GameInstance {
     // noLoop();
   }
 
+  /**
+   * Resets the game instance by resetting the snake and setting the game over
+   * status to false.
+   * @returns {void }
+   */
   reset() {
     this.snake.reset();
     this.isOver = false;

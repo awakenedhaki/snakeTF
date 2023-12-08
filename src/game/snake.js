@@ -118,6 +118,10 @@ class Snake {
     return snakeCopy;
   }
 
+  /**
+   * Resets the snake's position and velocity.
+   * @returns {void}
+   */
   reset() {
     this.body = [createVector(width / 2, height / 2)];
     this.xvelocity = 1;

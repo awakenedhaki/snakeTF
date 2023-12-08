@@ -41,6 +41,10 @@ class GameInstancesManager {
     }
   }
 
+  /**
+   * Calculates the grid dimensions based on the number of game instances.
+   * @returns {Object} The grid dimensions including width, height, columns, and rows.
+   */
   calculateGrid() {
     const columns = sqrt(this.nInstances);
     const rows = this.nInstances / columns;
@@ -55,6 +59,18 @@ class GameInstancesManager {
     };
   }
 
+  /**
+   * Runs all game instances managed by this game instances manager.
+   * @returns {void}
+   */
+  runInstances() {
+    this.gameInstances.forEach((gameInstance) => gameInstance.run());
+  }
+
+  /**
+   * Renders all game instances on the grid.
+   * @returns {void}
+   */
   renderGameInstances() {
     for (let i = 0; i < this.nInstances; i++) {
       const x = (i % this.grid.columns) * this.grid.width;
@@ -126,14 +142,6 @@ class GameInstancesManager {
    */
   allInstancesOver() {
     return this.gameInstances.every((gameInstance) => gameInstance.isOver);
-  }
-
-  /**
-   * Runs all game instances managed by this game instances manager.
-   * @returns {void}
-   */
-  runInstances() {
-    this.gameInstances.forEach((gameInstance) => gameInstance.run());
   }
 
   /**

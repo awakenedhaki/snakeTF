@@ -86,6 +86,10 @@ class NNSnake extends Snake {
     this.brain.mutate(rate);
   }
 
+  /**
+   * Resets the neural network snake.
+   * @returns {void}
+   */
   reset() {
     super.reset();
     this.totalDistance = 0;
