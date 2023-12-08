@@ -26,6 +26,9 @@ class GameInstance {
       this.food.updateLocation();
       this.snake.extendBody();
     }
+
+    this.snake.predict(this.food);
+
     this.snake.update();
     this.snake.show();
 
