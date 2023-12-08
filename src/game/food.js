@@ -8,7 +8,7 @@ class Food {
    * @constructor
    */
   constructor(position) {
-    this.position = position || generate2DCoordinates();
+    this.position = position || Food.generate2DCoordinates();
   }
 
   /**
@@ -27,6 +27,16 @@ class Food {
     stroke(227, 228, 219);
     fill(59, 37, 44);
     rect(this.position.x, this.position.y, tileSize, tileSize);
+  }
+
+  static generate2DCoordinates() {
+    const rows = floor(height / tileSize);
+    const columns = floor(width / tileSize);
+
+    const x = floor(random(rows)) * tileSize;
+    const y = floor(random(columns)) * tileSize;
+
+    return createVector(x, y);
   }
 
   /**

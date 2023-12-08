@@ -6,7 +6,12 @@ function setup() {
   createCanvas(600, 600);
   frameRate(10);
 
-  gameInstance = new GameInstance();
+  const hiddenLayers = new Map([
+    [0, 10],
+    [1, 7],
+    [2, 5],
+  ]);
+  gameInstance = new GameInstance(7, hiddenLayers, 4, 0.1);
 }
 
 function draw() {
