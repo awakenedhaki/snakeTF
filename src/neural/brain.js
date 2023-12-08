@@ -7,10 +7,11 @@ class Brain {
    * @param {number} nOutputNodes - The number of output nodes.
    * @param {object} model - The pre-existing model (optional).
    */
-  constructor(nInputNodes, hiddenLayers, nOutputNodes, model) {
+  constructor(nInputNodes, hiddenLayers, nOutputNodes, mutationRate, model) {
     this.nInputNodes = nInputNodes;
     this.hiddenLayers = hiddenLayers;
     this.nOutputNodes = nOutputNodes;
+    this.mutationRate = mutationRate;
     this.model =
       model ||
       this.createModel(nInputNodes, nHiddenNodes, nHiddenLayers, nOutputNodes);
