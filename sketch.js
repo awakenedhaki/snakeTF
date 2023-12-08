@@ -7,25 +7,25 @@ function setup() {
   frameRate(10);
 
   const hiddenLayers = new Map([
-    [0, 10],
-    [1, 7],
-    [2, 5],
+    [0, 20],
+    [1, 50],
+    [2, 20],
   ]);
-  gameInstance = new GameInstance(7, hiddenLayers, 4, 0.1);
+  brain = new Brain(7, hiddenLayers, 4, 0.3);
+  snake = new NNSnake(width / 2, height / 2, brain);
+  food = new Food();
+
+  gameInstancesManager = new GameInstancesManager(1);
+  gameInstancesManager.createGameInstances(snake, food);
+  brain.dispose();
 }
 
 function draw() {
-  gameInstance.run();
-}
+  background(59, 37, 44);
 
-function keyPressed() {
-  if (keyCode === UP_ARROW) {
-    gameInstance.updateSnakeDirection(0, -1);
-  } else if (keyCode === DOWN_ARROW) {
-    gameInstance.updateSnakeDirection(0, 1);
-  } else if (keyCode === LEFT_ARROW) {
-    gameInstance.updateSnakeDirection(-1, 0);
-  } else if (keyCode === RIGHT_ARROW) {
-    gameInstance.updateSnakeDirection(1, 0);
+  gameInstancesManager.runInstances();
+
+  if (gameInstancesManager.allInstancesOver()) {
+    gameInstancesManager.nextGeneration();
   }
 }
