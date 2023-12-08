@@ -1,6 +1,8 @@
 /**
  * Manages multiple game instances.
- * Each game instances manager has a number of game instances and can create game instances, run all game instances, and get all snakes from the game instances.
+ * Each game instances manager has a number of game instances and can create
+ * game instances, run all game instances, and get all snakes from the game
+ * instances.
  * @class
  */
 class GameInstancesManager {
@@ -25,7 +27,8 @@ class GameInstancesManager {
   }
 
   /**
-   * Creates the specified number of game instances, each with a copy of the given snake and food.
+   * Creates the specified number of game instances, each with a copy of the
+   * given snake and food.
    * @param {Snake} snake - The snake to copy for each game instance.
    * @param {Food} food - The food to copy for each game instance.
    */

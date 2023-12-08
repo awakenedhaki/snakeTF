@@ -1,13 +1,16 @@
 /**
  * Represents a snake in the game.
- * Each snake has a body represented by an array of vectors, and x and y velocities.
- * The snake can change direction, check for collisions with itself, eat food, and extend its body.
+ * Each snake has a body represented by an array of vectors, and x and y
+ * velocities.
+ * The snake can change direction, check for collisions with itself, eat food,
+ * and extend its body.
  * @class
  */
 class Snake {
   /**
    * Creates a new snake object.
-   * The snake's body starts with one segment at the given position, and it starts moving to the right.
+   * The snake's body starts with one segment at the given position, and it
+   * starts moving to the right.
    * @constructor
    * @param {number} x - The initial x-coordinate of the snake's head.
    * @param {number} y - The initial y-coordinate of the snake's head.
@@ -20,7 +23,8 @@ class Snake {
 
   /**
    * Changes the direction of the snake's movement.
-   * If the new direction is opposite to the current direction, the direction is not changed.
+   * If the new direction is opposite to the current direction, the direction
+   * is not changed.
    * @param {number} x - The new x velocity.
    * @param {number} y - The new y velocity.
    */
@@ -38,7 +42,8 @@ class Snake {
 
   /**
    * Checks if the snake has collided with itself.
-   * The snake is considered to have collided with itself if its head is in the same position as any part of its body.
+   * The snake is considered to have collided with itself if its head is in the
+   * same position as any part of its body.
    * @returns {boolean} - True if the snake has collided with itself, false otherwise.
    */
   collision() {
@@ -57,7 +62,8 @@ class Snake {
 
   /**
    * Checks if the snake has eaten a given food.
-   * The snake is considered to have eaten the food if its head is in the same position as the food.
+   * The snake is considered to have eaten the food if its head is in the same
+   * position as the food.
    * @param {Food} food - The food to check.
    * @returns {boolean} - True if the snake has eaten the food, false otherwise.
    */
@@ -76,7 +82,8 @@ class Snake {
 
   /**
    * Updates the snake's position based on its current velocity.
-   * The new position becomes the new head of the snake, and the last segment of the body is removed.
+   * The new position becomes the new head of the snake, and the last segment of
+   * the body is removed.
    * @returns {void}
    */
   update() {

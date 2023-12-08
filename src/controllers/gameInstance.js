@@ -46,7 +46,8 @@ class GameInstance {
 
   /**
    * Calculates the fitness of the snake in the game instance.
-   * The fitness is calculated based on the mean distance the snake has traveled and the length of the snake.
+   * The fitness is calculated based on the mean distance the snake has traveled
+   * and the length of the snake.
    * @returns {number} - The calculated fitness.
    */
   calculateFitness() {
@@ -68,7 +69,8 @@ class GameInstance {
 
   /**
    * Checks if the snake has collided with the border.
-   * The snake is considered to have collided with the border if its head is outside the canvas.
+   * The snake is considered to have collided with the border if its head is
+   * outside the canvas.
    * @returns {boolean} - True if the snake has collided with the border, false otherwise.
    */
   borderCollision() {
@@ -82,7 +84,8 @@ class GameInstance {
 
   /**
    * Checks if the game is over.
-   * The game is considered to be over if the snake has collided with the border or with itself.
+   * The game is considered to be over if the snake has collided with the border
+   * or with itself.
    * @returns {boolean} - True if the game is over, false otherwise.
    */
   gameOver() {
