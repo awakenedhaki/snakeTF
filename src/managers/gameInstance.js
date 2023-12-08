@@ -35,6 +35,14 @@ class GameInstance {
     }
   }
 
+  calculateFitness() {
+    const meanDistance = this.snake.totalDistance / frameCount;
+    const fitness =
+      (meanDistance * this.snake.length) / (meanDistance + this.snake.length);
+
+    return fitness;
+  }
+
   updateSnakeDirection(x, y) {
     this.snake.changeDirection(x, y);
   }
