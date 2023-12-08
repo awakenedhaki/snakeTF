@@ -98,6 +98,11 @@ class Snake {
     }
   }
 
+  copy() {
+    const snakeCopy = new Snake(this.head.x, this.head.y);
+    return snakeCopy;
+  }
+
   /**
    * Gets the head of the snake.
    * @method Snake#head

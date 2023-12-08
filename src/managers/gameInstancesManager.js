@@ -11,16 +11,18 @@ class GameInstancesManager {
    * Creates a new game instance.
    * @returns {GameInstance} The created game instance.
    */
-  createGameInstance(brain) {
-    return new GameInstance(brain);
+  createGameInstance(snake, food) {
+    return new GameInstance(snake, food);
   }
 
   /**
    * Creates multiple game instances.
    */
-  createGameInstances(brain) {
+  createGameInstances(snake, food) {
     for (let i = 0; i < this.nInstances; i++) {
-      this.gameInstances.push(this.createGameInstance(brain));
+      const snakeCopy = snake.copy();
+      const foodCopy = food.copy();
+      this.gameInstances.push(this.createGameInstance(snakeCopy, foodCopy));
     }
   }
 

@@ -3,17 +3,9 @@
  * @class
  */
 class GameInstance {
-  constructor(hyperparameters, brain) {
-    this.brain =
-      brain ||
-      new Brain(
-        hyperparameters.nInputNodes,
-        hyperparameters.hiddenLayers,
-        hyperparameters.nOutputNodes,
-        hyperparameters.mutationRate
-      );
-    this.snake = new NNSnake(width / 2, height / 2, this.brain);
-    this.food = new Food();
+  constructor(snake, food) {
+    this.snake = snake;
+    this.food = food;
     this.isOver = false;
   }
 

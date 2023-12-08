@@ -39,6 +39,10 @@ class Food {
     return createVector(x, y);
   }
 
+  copy() {
+    return new Food(this.position.copy());
+  }
+
   /**
    * Get the x-coordinate of the food's position.
    * @returns {number} The x-coordinate of the food's position.
