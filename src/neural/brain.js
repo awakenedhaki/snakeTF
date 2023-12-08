@@ -108,6 +108,7 @@ class Brain {
         this.nInputNodes,
         this.hiddenLayers,
         this.nOutputNodes,
+        this.mutationRate,
         modelCopy
       );
     });
