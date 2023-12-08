@@ -118,6 +118,12 @@ class Snake {
     return snakeCopy;
   }
 
+  reset() {
+    this.body = [createVector(width / 2, height / 2)];
+    this.xvelocity = 1;
+    this.yvelocity = 0;
+  }
+
   /**
    * Gets the position of the snake's head.
    * @returns {p5.Vector} - The position of the snake's head.

@@ -25,8 +25,6 @@ class GameInstance {
    * @returns {void}
    */
   run() {
-    background(59, 37, 44);
-
     this.food.show();
     if (this.snake.eat(this.food)) {
       this.food.updateLocation();
@@ -107,6 +105,11 @@ class GameInstance {
     fill(255, 128, 114);
     textSize(24);
     text("Score: " + (this.snake.body.length - 1), 0, 25);
-    noLoop();
+    // noLoop();
+  }
+
+  reset() {
+    this.snake.reset();
+    this.isOver = false;
   }
 }

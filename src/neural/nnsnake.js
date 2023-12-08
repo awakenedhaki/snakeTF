@@ -86,6 +86,11 @@ class NNSnake extends Snake {
     this.brain.mutate(rate);
   }
 
+  reset() {
+    super.reset();
+    this.totalDistance = 0;
+  }
+
   /**
    * Creates a copy of the NNSnake.
    * @returns {NNSnake} - The copied NNSnake.
