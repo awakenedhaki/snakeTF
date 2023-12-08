@@ -53,7 +53,7 @@ class Brain {
    */
   predict(inputs) {
     return tf.tidy(() => {
-      const output = this.model.predict(tf.tensor2D([inputs]));
+      const output = this.model.predict(tf.tensor2d([inputs]));
       return output.dataSync();
     });
   }
