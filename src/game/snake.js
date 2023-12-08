@@ -1,13 +1,16 @@
 /**
- * Represents a Snake object that moves and grows in a grid.
- * @class Snake
+ * Represents a snake in the game.
+ * Each snake has a body represented by an array of vectors, and x and y velocities.
+ * The snake can change direction, check for collisions with itself, eat food, and extend its body.
+ * @class
  */
 class Snake {
   /**
-   * Constructs a Snake object.
+   * Creates a new snake object.
+   * The snake's body starts with one segment at the given position, and it starts moving to the right.
    * @constructor
-   * @param {number} x - The initial x-coordinate of the snake.
-   * @param {number} y - The initial y-coordinate of the snake.
+   * @param {number} x - The initial x-coordinate of the snake's head.
+   * @param {number} y - The initial y-coordinate of the snake's head.
    */
   constructor(x, y) {
     this.body = [createVector(x, y)];
@@ -17,9 +20,9 @@ class Snake {
 
   /**
    * Changes the direction of the snake's movement.
-   * @method Snake#changeDirection
-   * @param {number} x - The x-component of the new velocity.
-   * @param {number} y - The y-component of the new velocity.
+   * If the new direction is opposite to the current direction, the direction is not changed.
+   * @param {number} x - The new x velocity.
+   * @param {number} y - The new y velocity.
    */
   changeDirection(x, y) {
     if (
@@ -34,9 +37,9 @@ class Snake {
   }
 
   /**
-   * Checks for collision of the snake's head with its body segments.
-   * @method Snake#collision
-   * @returns {boolean} True if there is a collision; otherwise, false.
+   * Checks if the snake has collided with itself.
+   * The snake is considered to have collided with itself if its head is in the same position as any part of its body.
+   * @returns {boolean} - True if the snake has collided with itself, false otherwise.
    */
   collision() {
     if (this.body.length < 3) {
@@ -53,18 +56,18 @@ class Snake {
   }
 
   /**
-   * Checks if the snake has eaten the food.
-   * @method Snake#eat
-   * @param {Food} food - The food object to check against.
-   * @returns {boolean} True if the snake's tail position matches the food position; otherwise, false.
+   * Checks if the snake has eaten a given food.
+   * The snake is considered to have eaten the food if its head is in the same position as the food.
+   * @param {Food} food - The food to check.
+   * @returns {boolean} - True if the snake has eaten the food, false otherwise.
    */
   eat(food) {
     return this.head.equals(food.position);
   }
 
   /**
-   * Extends the length of the snake by adding a new segment to its body.
-   * @method Snake#extendBody
+   * Adds a new segment to the snake's body at its current head position.
+   * @returns {void}
    */
   extendBody() {
     const tail = this.body[this.body.length - 1].copy();
@@ -72,8 +75,9 @@ class Snake {
   }
 
   /**
-   * Updates the position and movement of the snake.
-   * @method Snake#update
+   * Updates the snake's position based on its current velocity.
+   * The new position becomes the new head of the snake, and the last segment of the body is removed.
+   * @returns {void}
    */
   update() {
     const segment = this.head.copy();
@@ -87,7 +91,7 @@ class Snake {
 
   /**
    * Displays the snake on the canvas.
-   * @method Snake#show
+   * @returns {void}
    */
   show() {
     fill(227, 228, 219);
@@ -98,24 +102,26 @@ class Snake {
     }
   }
 
+  /**
+   * Creates a copy of the snake object.
+   * @returns {Snake} - The copied snake.
+   */
   copy() {
     const snakeCopy = new Snake(this.head.x, this.head.y);
     return snakeCopy;
   }
 
   /**
-   * Gets the head of the snake.
-   * @method Snake#head
-   * @returns {p5.Vector} The vector representing the head of the snake.
+   * Gets the position of the snake's head.
+   * @returns {p5.Vector} - The position of the snake's head.
    */
   get head() {
     return this.body[0];
   }
 
   /**
-   * Gets the tail of the snake.
-   * @method Snake#tail
-   * @returns {p5.Vector} The vector representing the tail of the snake.
+   * Gets the position of the snake's tail.
+   * @returns {p5.Vector} - The position of the snake's tail.
    */
   get tail() {
     return this.body[this.body.length - 1];
