@@ -92,8 +92,12 @@ class Brain {
    * @todo Implement.
    */
   copy() {
-    return tidy(() => {
-      const modelCopy = this.createModel();
+    return tf.tidy(() => {
+      const modelCopy = this.createModel(
+        this.nInputNodes,
+        this.hiddenLayers,
+        this.nOutputNodes
+      );
       const weights = this.model
         .getWeights()
         .map((weights) => tf.clone(weights));
