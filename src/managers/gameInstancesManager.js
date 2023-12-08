@@ -24,15 +24,9 @@ class GameInstancesManager {
     }
   }
 
-  /**
-   * Updates all game instances.
-   */
-  update() {}
-
-  /**
-   * Displays all game instances.
-   */
-  show() {}
+  runInstances() {
+    this.gameInstances.forEach((gameInstance) => gameInstance.run());
+  }
 
   get snakes() {
     return this.gameInstances.map((gameInstance) => gameInstance.snake);
