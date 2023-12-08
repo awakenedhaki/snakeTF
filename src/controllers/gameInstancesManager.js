@@ -14,6 +14,7 @@ class GameInstancesManager {
   constructor(nInstances) {
     this.nInstances = nInstances;
     this.gameInstances = [];
+    this.grid = this.calculateGrid();
   }
 
   /**
@@ -23,7 +24,7 @@ class GameInstancesManager {
    * @returns {GameInstance} - The created game instance.
    */
   createGameInstance(snake, food) {
-    return new GameInstance(snake, food);
+    return new GameInstance(snake, food, this.grid.width, this.grid.height);
   }
 
   /**
@@ -40,6 +41,35 @@ class GameInstancesManager {
     }
   }
 
+  calculateGrid() {
+    const columns = sqrt(this.nInstances);
+    const rows = this.nInstances / columns;
+    const tileWidth = width / columns;
+    const tileHeight = height / rows;
+
+    return {
+      width: tileWidth,
+      height: tileHeight,
+      columns: columns,
+      rows: rows,
+    };
+  }
+
+  renderGameInstances() {
+    for (let i = 0; i < this.nInstances; i++) {
+      const x = (i % this.grid.columns) * this.grid.width;
+      const y = floor(i / this.grid.rows) * this.grid.height;
+
+      push();
+      translate(x, y);
+      this.gameInstances[i].run();
+      pop();
+    }
+
+    if (this.allInstancesOver()) {
+      this.nextGeneration();
+    }
+  }
   /**
    * Creates the next generation of game instances by performing selection and
    * mutation.

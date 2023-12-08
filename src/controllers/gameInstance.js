@@ -11,10 +11,12 @@ class GameInstance {
    * @param {Snake} snake - The snake in the game instance.
    * @param {Food} food - The food in the game instance.
    */
-  constructor(snake, food) {
+  constructor(snake, food, canvasWidth, canvasHeight) {
     this.snake = snake;
     this.food = food;
     this.isOver = false;
+    this.canvasWidth = canvasWidth;
+    this.canvasHeight = canvasHeight;
   }
 
   /**
@@ -74,9 +76,9 @@ class GameInstance {
   borderCollision() {
     return (
       this.snake.body[0].x < 0 ||
-      this.snake.body[0].x > width ||
+      this.snake.body[0].x > this.canvasWidth ||
       this.snake.body[0].y < 0 ||
-      this.snake.body[0].y > height
+      this.snake.body[0].y > this.canvasHeight
     );
   }
 
@@ -95,7 +97,7 @@ class GameInstance {
    * @returns {void}
    */
   gameOverMessage() {
-    translate(width / 2, height / 2);
+    translate(this.canvasWidth / 2, this.canvasHeight / 2);
     textAlign(CENTER, CENTER);
 
     fill(250, 128, 114);
