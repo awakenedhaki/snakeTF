@@ -43,6 +43,10 @@ class GameInstance {
     );
   }
 
+  gameOver() {
+    return this.borderCollision() || this.snake.collision();
+  }
+
   gameOverMessage() {
     translate(width / 2, height / 2);
     textAlign(CENTER, CENTER);
@@ -55,9 +59,5 @@ class GameInstance {
     textSize(24);
     text("Score: " + (this.snake.body.length - 1), 0, 25);
     noLoop();
-  }
-
-  gameOver() {
-    return this.borderCollision() || this.snake.collision();
   }
 }
