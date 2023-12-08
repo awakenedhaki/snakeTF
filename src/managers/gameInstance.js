@@ -11,14 +11,28 @@ class GameInstance {
   }
 
   /**
-   * Updates the game instance.
+   * Runs the game instance.
    */
-  update() {}
+  run() {
+    background(59, 37, 44);
 
-  /**
-   * Displays the game instance.
-   */
-  show() {}
+    this.food.show();
+    if (this.snake.eat(this.food)) {
+      this.food.updateLocation();
+      this.snake.extendBody();
+    }
+    this.snake.update();
+    this.snake.show();
+
+    // Terminate Game
+    if (this.gameOver(this.snake)) {
+      this.gameOverMessage();
+    }
+  }
+
+  updateSnakeDirection(x, y) {
+    this.snake.changeDirection(x, y);
+  }
 
   borderCollision() {
     return (
@@ -27,6 +41,20 @@ class GameInstance {
       this.snake.body[0].y < 0 ||
       this.snake.body[0].y > height
     );
+  }
+
+  gameOverMessage() {
+    translate(width / 2, height / 2);
+    textAlign(CENTER, CENTER);
+
+    fill(250, 128, 114);
+    textSize(32);
+    text("Game Over.", 0, 0);
+
+    fill(255, 128, 114);
+    textSize(24);
+    text("Score: " + (this.snake.body.length - 1), 0, 25);
+    noLoop();
   }
 
   gameOver() {
