@@ -7,8 +7,8 @@ class Food {
    * Constructs a Food object.
    * @constructor
    */
-  constructor() {
-    this.position = generate2DCoordinates();
+  constructor(position) {
+    this.position = position || generate2DCoordinates();
   }
 
   /**
