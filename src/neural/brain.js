@@ -13,8 +13,7 @@ class Brain {
     this.nOutputNodes = nOutputNodes;
     this.mutationRate = mutationRate;
     this.model =
-      model ||
-      this.createModel(nInputNodes, nHiddenNodes, nHiddenLayers, nOutputNodes);
+      model || this.createModel(nInputNodes, hiddenLayers, nOutputNodes);
   }
 
   /**
@@ -27,14 +26,15 @@ class Brain {
   createModel(nInputNodes, hiddenLayers, nOutputNodes) {
     const model = tf.sequential();
 
-    for (const [layer, nodes] of Object.entries(this.hiddenLayers)) {
-      const hidden = tf.layers.dense({
-        units: nodes,
+    const hiddenLayerKeys = Array.from(hiddenLayers.keys());
+    const hiddenLayerValues = Array.from(hiddenLayers.values());
+    for (let i = 0; i < hiddenLayerKeys.length; i++) {
+      const hiddenLayer = tf.layers.dense({
+        units: hiddenLayerValues[i],
         activation: "sigmoid",
-        inputShape:
-          layer === 0 ? [nInputNodes] : [this.hiddenLayers[layer - 1]],
+        inputShape: i === 0 ? [nInputNodes] : [hiddenLayerValues[i - 1]],
       });
-      model.add(hidden);
+      model.add(hiddenLayer);
     }
 
     const output = tf.layers.dense({
@@ -102,8 +102,7 @@ class Brain {
 
       return new Brain(
         this.nInputNodes,
-        this.nHiddenNodes,
-        this.nHiddenNodes,
+        this.hiddenLayers,
         this.nOutputNodes,
         modelCopy
       );
