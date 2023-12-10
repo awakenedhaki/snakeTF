@@ -4,7 +4,7 @@
  * check for game over, and display a game over message.
  * @class
  */
-class GameInstance {
+class Game {
   /**
    * Creates a new game instance.
    * @constructor
