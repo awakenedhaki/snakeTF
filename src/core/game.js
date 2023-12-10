@@ -92,26 +92,29 @@ class Game {
     translate(this.canvasWidth / 2, this.canvasHeight / 2);
     textAlign(CENTER, CENTER);
 
+    push();
     fill(250, 128, 114);
     textSize(32);
     text("Game Over.", 0, 0);
+    pop();
 
+    push();
     fill(255, 128, 114);
     textSize(24);
-    text("Score: " + (this.snake.body.length - 1), 0, 25);
-    // noLoop();
+    text("Score: " + this.snake.length - 1, 0, 25);
+    pop();
+
+    noLoop();
   }
 
   /**
-   * Resets the game instance by resetting the snake and setting the game over
-   * status to false.
-   * @returns {void }
+   * Validates the position of an entity.
+   * @static
+   * @param {Entity} entity - The entity to validate.
+   * @param {number} width - The width of the canvas.
+   * @param {number} height - The height of the canvas.
+   * @returns {boolean} - True if the entity's position is valid, false otherwise.
    */
-  reset() {
-    this.snake.reset();
-    this.isOver = false;
-  }
-
   static validateEntityPosition(entity, width, height) {
     return (
       entity.x >= 0 && entity.x < width && entity.y >= 0 && entity.y < height
