@@ -160,4 +160,12 @@ class Snake {
   get tail() {
     return this.body[this.body.length - 1];
   }
+
+  /**
+   * Gets the length of the snake's body.
+   * @returns {number} - The length of the snake's body.
+   */
+  get length() {
+    return this.body.length;
+  }
 }
