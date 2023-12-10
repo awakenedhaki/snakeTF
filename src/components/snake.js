@@ -46,7 +46,7 @@ class Snake {
    * same position as any part of its body.
    * @returns {boolean} - True if the snake has collided with itself, false otherwise.
    */
-  collision() {
+  checkSelfCollision() {
     if (this.body.length < 3) {
       return false;
     }
@@ -64,6 +64,8 @@ class Snake {
    * Checks if the snake has collided with the border.
    * The snake is considered to have collided with the border if its head is
    * outside the canvas.
+   * @param {number} width - The width of the canvas.
+   * @param {number} height - The height of the canvas.
    * @returns {boolean} - True if the snake has collided with the border, false otherwise.
    */
   checkBorderCollision(width, height) {
