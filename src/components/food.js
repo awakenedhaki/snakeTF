@@ -17,10 +17,12 @@ class Food {
 
   /**
    * Updates the location of the food to a new random position.
+   * @param {number} width - The width of the canvas.
+   * @param {number} height - The height of the canvas.
    * @returns {void}
    */
-  updateLocation() {
-    this.position = generate2DCoordinates();
+  updateLocation(width, height) {
+    this.position = Food.generate2DCoordinates(width, height);
   }
 
   /**
@@ -37,9 +39,11 @@ class Food {
    * Generates a random 2D coordinate within the canvas with consideration to
    * the tile size global variable.
    * @static
+   * @param {number} width - The width of the canvas.
+   * @param {number} height - The height of the canvas.
    * @returns {p5.Vector} - The generated 2D coordinate.
    */
-  static generate2DCoordinates() {
+  static generate2DCoordinates(width, height) {
     const rows = floor(height / tileSize);
     const columns = floor(width / tileSize);
 
