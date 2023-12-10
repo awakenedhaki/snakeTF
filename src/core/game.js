@@ -21,7 +21,7 @@ class Game {
 
     // Game Entities
     if (!Game.validateEntityPosition(snake.head, width, height)) {
-      snake.setPosition(this.width / 2, this.height / 2);
+      snake.position = createVector(this.width / 2, this.height / 2);
     }
 
     if (!Game.validateEntityPosition(food, width, height)) {
