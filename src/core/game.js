@@ -40,6 +40,8 @@ class Game {
    * @returns {void}
    */
   run() {
+    this.renderCanvas();
+
     this.food.show();
     if (this.snake.eat(this.food)) {
       this.food.updateLocation();
@@ -47,7 +49,6 @@ class Game {
     }
 
     this.snake.predict(this.food);
-
     this.snake.update();
     this.snake.show();
 
@@ -58,26 +59,16 @@ class Game {
   }
 
   /**
-   * Calculates the fitness of the snake in the game instance.
-   * The fitness is calculated based on the mean distance the snake has traveled
-   * and the length of the snake.
-   * @returns {number} - The calculated fitness.
-   */
-  calculateFitness() {
-    const meanDistance = this.snake.totalDistance / frameCount;
-    const fitness =
-      (meanDistance * this.snake.length) / (meanDistance + this.snake.length);
-
-    return fitness;
-  }
-  /**
-   * Updates the direction of the snake's movement.
-   * @param {number} x - The new x velocity.
-   * @param {number} y - The new y velocity.
+   * Renders the canvas.
    * @returns {void}
    */
-  updateSnakeDirection(x, y) {
-    this.snake.changeDirection(x, y);
+  renderCanvas() {
+    push();
+    rectMode(CENTER);
+    noFill();
+    stroke(255);
+    rect(this.width / 2, this.height / 2, this.width, this.height);
+    pop();
   }
 
   /**
