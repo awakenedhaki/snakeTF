@@ -12,7 +12,7 @@ class Food {
    * @param {p5.Vector} position - The initial position of the food.
    */
   constructor(position) {
-    this.position = position || Food.generate2DCoordinates();
+    this.position = position || Food.generate2DCoordinates(width, height);
   }
 
   /**
