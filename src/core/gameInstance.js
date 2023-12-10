@@ -8,15 +8,28 @@ class Game {
   /**
    * Creates a new game instance.
    * @constructor
+   * @param {number} width - The width of the canvas.
+   * @param {number} height - The height of the canvas.
    * @param {Snake} snake - The snake in the game instance.
    * @param {Food} food - The food in the game instance.
    */
-  constructor(snake, food, canvasWidth, canvasHeight) {
+  constructor(width, height, snake, food) {
+    // Game Properties
+    this.width = width;
+    this.height = height;
+    this.isOver = false;
+
+    // Game Entities
+    if (!Game.validateEntityPosition(snake.head, width, height)) {
+      snake.setPosition(this.width / 2, this.height / 2);
+    }
+
+    if (!Game.validateEntityPosition(food, width, height)) {
+      food.updateLocation(this.width, this.height);
+    }
+
     this.snake = snake;
     this.food = food;
-    this.isOver = false;
-    this.canvasWidth = canvasWidth;
-    this.canvasHeight = canvasHeight;
   }
 
   /**
@@ -118,5 +131,11 @@ class Game {
   reset() {
     this.snake.reset();
     this.isOver = false;
+  }
+
+  static validateEntityPosition(entity, width, height) {
+    return (
+      entity.x >= 0 && entity.x < width && entity.y >= 0 && entity.y < height
+    );
   }
 }
