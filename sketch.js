@@ -11,21 +11,10 @@ function setup() {
     [1, 50],
     [2, 20],
   ]);
-  brain = new Brain(7, hiddenLayers, 4, 0.3);
-  snake = new NNSnake(width / 2, height / 2, brain);
-  food = new Food();
-
-  gameInstancesManager = new GameInstancesManager(1);
-  gameInstancesManager.createGameInstances(snake, food);
-  brain.dispose();
+  gameGrid = new GameGrid(100);
 }
 
 function draw() {
   background(59, 37, 44);
-
-  gameInstancesManager.runInstances();
-
-  if (gameInstancesManager.allInstancesOver()) {
-    gameInstancesManager.nextGeneration();
-  }
+  gameGrid.run();
 }
