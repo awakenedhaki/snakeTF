@@ -61,6 +61,21 @@ class Snake {
   }
 
   /**
+   * Checks if the snake has collided with the border.
+   * The snake is considered to have collided with the border if its head is
+   * outside the canvas.
+   * @returns {boolean} - True if the snake has collided with the border, false otherwise.
+   */
+  checkBorderCollision(width, height) {
+    return (
+      this.head.x < 0 ||
+      this.head.x > width ||
+      this.head.y < 0 ||
+      this.head.y > height
+    );
+  }
+
+  /**
    * Checks if the snake has eaten a given food.
    * The snake is considered to have eaten the food if its head is in the same
    * position as the food.
