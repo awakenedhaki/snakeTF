@@ -54,7 +54,7 @@ class Game {
 
     // Terminate Game
     if (this.gameOver(this.snake)) {
-      this.gameOverMessage();
+      this.isOver = true;
     }
   }
 
@@ -88,23 +88,12 @@ class Game {
    * Displays a game over message on the canvas.
    * @returns {void}
    */
-  gameOverMessage() {
-    translate(this.canvasWidth / 2, this.canvasHeight / 2);
-    textAlign(CENTER, CENTER);
-
+  renderGameOverMessage() {
     push();
-    fill(250, 128, 114);
-    textSize(32);
-    text("Game Over.", 0, 0);
+    rectMode(CENTER);
+    fill(255, 100);
+    rect(this.width / 2, this.height / 2, this.width, this.height);
     pop();
-
-    push();
-    fill(255, 128, 114);
-    textSize(24);
-    text("Score: " + this.snake.length - 1, 0, 25);
-    pop();
-
-    noLoop();
   }
 
   /**
