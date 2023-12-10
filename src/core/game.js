@@ -78,7 +78,10 @@ class Game {
    * @returns {boolean} - True if the game is over, false otherwise.
    */
   gameOver() {
-    return this.borderCollision() || this.snake.collision();
+    return (
+      this.snake.checkBorderCollision(this.width, this.height) ||
+      this.snake.checkSelfCollision()
+    );
   }
 
   /**
