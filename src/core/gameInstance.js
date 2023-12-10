@@ -81,21 +81,6 @@ class Game {
   }
 
   /**
-   * Checks if the snake has collided with the border.
-   * The snake is considered to have collided with the border if its head is
-   * outside the canvas.
-   * @returns {boolean} - True if the snake has collided with the border, false otherwise.
-   */
-  borderCollision() {
-    return (
-      this.snake.body[0].x < 0 ||
-      this.snake.body[0].x > this.canvasWidth ||
-      this.snake.body[0].y < 0 ||
-      this.snake.body[0].y > this.canvasHeight
-    );
-  }
-
-  /**
    * Checks if the game is over.
    * The game is considered to be over if the snake has collided with the border
    * or with itself.
